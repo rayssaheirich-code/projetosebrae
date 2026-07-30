@@ -1,12 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>projeto sebrae</h1>
-    <p>brae (Serviço Brasileiro de Apoio às Micro e Pequenas Empresas) é uma entidade privada sem fins lucrativos que ajuda a criar, melhorar e fazer crescer pequenos negócios no Brasil. Criado em 5 de julho de 1972, ele faz parte do chamado "Sistema S" e oferece orientações e cursos para quem quer empreender.O</p>
-</body>
-</html>
+import random
+
+
+def jogo_do_gato():
+    print("========================================")
+    print(" 🐱 BEM-VINDO AO JOGO DO GATO FAMINTO! 🐱")
+    print("========================================")
+    print("O gatinho Miau está miando de fome!")
+    print("Ele tem um número secreto de sachês que quer comer hoje (entre 1 e 10).")
+    print("Tente adivinhar quantos sachês ele quer para fazê-lo ronronar!\n")
+
+    # O gato escolhe um número secreto de 1 a 10
+    saches_desejados = random.randint(1, 10)
+    tentativas = 0
+    acertou = False
+
+    while not acertou:
+        try:
+            chute = int(input("Quantos sachês você vai dar para o gato? "))
+            tentativas += 1
+
+            if chute < 1 or chute > 10:
+                print("🐾 Ei! Escolha um número entre 1 e 10!\n")
+            elif chute < saches_desejados:
+                print("😿 *Miau...* Ainda estou com fome! Quer mais sachês!\n")
+            elif chute > saches_desejados:
+                print(
+                    "😾 *Hisss!* Muito comida! O gato ficou empanturrado!\n"
+                )
+            else:
+                acertou = True
+                print("\n🎉 *PRRRRRRR...* (som de ronrono)")
+                print(
+                    f"😸 Você acertou! O gatinho comeu {saches_desejados} sachês e dormiu feliz!"
+                )
+                print(f"🏆 Você precisou de {tentativas} tentativa(s).")
+
+        except ValueError:
+            print("🐾 Por favor, digite apenas números inteiros!\n")
+
+
+# Iniciar o jogo
+jogo_do_gato()
