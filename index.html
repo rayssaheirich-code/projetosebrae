@@ -1,43 +1,107 @@
-import random
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo dos Gatinhos 🐾</title>
+    <style>
+        /* Estilização da página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0e6ff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
 
-def jogo_do_gato():
-    print("========================================")
-    print(" 🐱 BEM-VINDO AO JOGO DO GATO FAMINTO! 🐱")
-    print("========================================")
-    print("O gatinho Miau está miando de fome!")
-    print("Ele tem um número secreto de sachês que quer comer hoje (entre 1 e 10).")
-    print("Tente adivinhar quantos sachês ele quer para fazê-lo ronronar!\n")
+        h1 {
+            color: #6c5ce7;
+            margin-bottom: 10px;
+        }
 
-    # O gato escolhe um número secreto de 1 a 10
-    saches_desejados = random.randint(1, 10)
-    tentativas = 0
-    acertou = False
+        .cat-avatar {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: bounce 2s infinite alternate;
+        }
 
-    while not acertou:
-        try:
-            chute = int(input("Quantos sachês você vai dar para o gato? "))
-            tentativas += 1
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #666;
+        }
 
-            if chute < 1 or chute > 10:
-                print("🐾 Ei! Escolha um número entre 1 e 10!\n")
-            elif chute < saches_desejados:
-                print("😿 *Miau...* Ainda estou com fome! Quer mais sachês!\n")
-            elif chute > saches_desejados:
-                print(
-                    "😾 *Hisss!* Muito comida! O gato ficou empanturrado!\n"
-                )
-            else:
-                acertou = True
-                print("\n🎉 *PRRRRRRR...* (som de ronrono)")
-                print(
-                    f"😸 Você acertou! O gatinho comeu {saches_desejados} sachês e dormiu feliz!"
-                )
-                print(f"🏆 Você precisou de {tentativas} tentativa(s).")
+        button {
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            margin-top: 15px;
+        }
 
-        except ValueError:
-            print("🐾 Por favor, digite apenas números inteiros!\n")
+        button:hover {
+            background-color: #5b4bc4;
+            transform: scale(1.05);
+        }
 
+        .counter {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #a29bfe;
+        }
 
-# Iniciar o jogo
-jogo_do_gato()
+        /* Animação simples para o gato */
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Cantinho do Miau 🐱</h1>
+        <div class="cat-avatar">😸</div>
+        <p>Bem-vindo! Este gatinho virtual adora atenção. Clique no botão abaixo para fazer carinho nele!</p>
+        
+        <button onclick="fazerCarinho()">Fazer Carinho 🐾</button>
+        
+        <div class="counter">
+            Você já fez carinho <span id="contador">0</span> vezes!
+        </div>
+    </div>
+
+    <script>
+        // Lógica do contador de carinhos
+        let carinhos = 0;
+
+        function fazerCarinho() {
+            carinhos++;
+            document.getElementById('contador').innerText = carinhos;
+            
+            // Pequena surpresa a cada 10 carinhos
+            if (carinhos % 10 === 0) {
+                alert('😻 O gatinho começou a ronronar de tanto carinho!');
+            }
+        }
+    </script>
+
+</body>
+</html>
